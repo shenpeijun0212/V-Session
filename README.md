@@ -50,41 +50,27 @@ To compute accuracy from experiment logs, run:
 cd eval
 python compute_accuracy.py
 
-The script automatically scans ./log/ for .log files and reports:
-
-Total number of samples
-
-Number of acc:True entries
-
-Overall accuracy rate
-
 🧠 Datasets
 
 GSM8K — Grade-school math word problems (8-shot setting)
-
 MATH500 — Advanced-level math benchmark (5-shot setting)
-
-Datasets should be placed in the following structure:
 
 ⚙️ Fine-tuning
 
 Fine-tuning scripts and configurations are available in fine-tuning/.
-Training is conducted using the open-source LLaMA-Factory
- framework.
+Training is conducted using the open-source LLaMA-Factory framework.
 
-Example configuration:
+configuration:
 
 Batch size: 72
-
 Learning rate: 8e-6
-
 Epochs: 3
-
 Warmup ratio: 0.08
 
-See train_config.json for detailed settings.
+See run.sh for detailed settings.
 
 🤝 Acknowledgements
 
 This work builds upon the open-source LLaMA-Factory(https://github.com/hiyouga/LLaMA-Factory) framework.
 We also acknowledge the use of GSM8K and MATH500 datasets for benchmarking mathematical reasoning.
+
