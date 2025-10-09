@@ -53,6 +53,7 @@ python compute_accuracy.py
 🧠 Datasets
 
 GSM8K — Grade-school math word problems (8-shot setting)
+
 MATH500 — Advanced-level math benchmark (5-shot setting)
 
 ⚙️ Fine-tuning
@@ -73,4 +74,5 @@ See run.sh for detailed settings.
 
 This work builds upon the open-source LLaMA-Factory(https://github.com/hiyouga/LLaMA-Factory) framework.
 We also acknowledge the use of GSM8K and MATH500 datasets for benchmarking mathematical reasoning.
+
 
