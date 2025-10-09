@@ -1,0 +1,74 @@
+If you are a math whiz, please answer the following question.
+Question: Mitchell is trying to chew as many pieces of gum at once as he can. He has 8 packets of gum, There are 7 pieces in each. If he chews all the gum except for 2 pieces, how many pieces does he chew at once?
+Thought 1: First, calculate the total number of gum pieces.
+8 packets * 7 pieces = 56 pieces.
+Thought 2: Subtract the 2 pieces he doesn't chew.
+56 - 2 = 54 pieces.
+Conclusion: Mitchell chews 54 pieces at once.
+#### 54 <end>
+If you are a math whiz, please answer the following question.
+Question: Fred has 38 red marbles, half as many green ones, and the rest are dark blue. If he has 63 marbles, how many of them are dark blue?
+Thought 1: Calculate the number of green marbles.
+38 / 2 = 19 green marbles.
+Thought 2: Subtract the red and green marbles from the total.
+63 - 38 - 19 = 6 dark blue marbles.
+Conclusion: Fred has 6 dark blue marbles.
+#### 6 <end>
+If you are a math whiz, please answer the following question.
+Question: There are 92 students altogether. Twenty of them ride the school bus home together, 5/8 of the remaining ride their own bike home, and the rest whose houses are near the school walk home. How many students are walking home?
+If there are 92 students and 20 students take the bus home, the number of students who haven't taken the bus is 92-20 = <<92-20=72>>72 students.
+Thought 1: Subtract the students who take the bus.
+92 - 20 = 72 students.
+Thought 2: Calculate the number of students who ride bikes.
+5/8 * 72 = 45 students.
+Thought 3: Subtract the bike riders from the remaining students.
+72 - 45 = 27 students.
+Conclusion: 27 students walk home.
+#### 27 <end>
+If you are a math whiz, please answer the following question.
+Question: Luther made 12 pancakes for breakfast. His family has 8 people. How many more pancakes must he make for everyone to have a second pancake?
+Thought 1: Calculate the total number of pancakes needed for seconds.
+8 people * 2 pancakes = 16 pancakes.
+Thought 2: Subtract the pancakes already made.
+16 - 12 = 4 pancakes.
+Conclusion: Luther needs to make 4 more pancakes.
+#### 4 <end>
+If you are a math whiz, please answer the following question.
+Question: A pool has 48 blue tiles and 32 red tiles. If the pool needs 100 tiles to be completed, how many more tiles are needed?
+Thought 1: Calculate the total number of tiles already in the pool.
+48 + 32 = 80 tiles.
+Thought 2: Subtract the current tiles from the total needed.
+100 - 80 = 20 tiles.
+Conclusion: 20 more tiles are needed.
+#### 20 <end>
+If you are a math whiz, please answer the following question.
+Question: Brianne saves $10 in January. Each month, she saves twice as much as her previous month's savings. How much will she save in May?
+Thought 1: Calculate savings for February.
+10 * 2 = 20
+Thought 2: Calculate savings for March.
+20 * 2 = 40
+Thought 3: Calculate savings for April.
+40 * 2 = 80
+Thought 4: Calculate savings for May.
+80 * 2 = 160
+Conclusion: Brianne will save $160 in May.
+#### 160 <end>
+If you are a math whiz, please answer the following question.
+Question: Tim does 100 tasks a day. They each pay $1.2. If he works 6 days a week how much does he make a week?
+Thought 1: Calculate daily earnings.
+100 tasks * 1.2 = 120 per day.
+Thought 2: Calculate weekly earnings.
+120 ∗ 6days = 720 per week.
+Conclusion: Tim makes $720 a week.
+#### 720 <end>
+If you are a math whiz, please answer the following question.
+Question: A school bus has 4 columns and 10 rows of seats. If the school has 6 buses, how many students can the buses accommodate?
+Each bus can accommodate 10 x 4 = <<10*4=40>>40 students.
+Thought 1: Calculate the number of seats per bus.
+10 rows * 4 columns = 40 seats per bus.
+Thought 2: Calculate the total number of seats for 6 buses.
+40 seats * 6 buses = 240 seats.
+Conclusion: The buses can accommodate 240 students.
+#### 240 <end>
+If you are a math whiz, please answer the following question.
+Question: 

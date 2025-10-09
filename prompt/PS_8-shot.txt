@@ -1,0 +1,88 @@
+If you are a math whiz, please answer the following question.
+Question: Mitchell is trying to chew as many pieces of gum at once as he can. He has 8 packets of gum, There are 7 pieces in each. If he chews all the gum except for 2 pieces, how many pieces does he chew at once?
+Plan:
+Step 1: Calculate the total number of gum pieces Mitchell has.
+Step 2: Subtract the number of gum pieces Mitchell does not chew.
+Solution:
+Step 1: Total number of gum pieces = 8 packets * 7 pieces = 56 pieces
+Step 2: Number of pieces chewed = Total pieces - pieces not chewed = 56 pieces - 2 pieces = 54 pieces
+Therefore, Mitchell chews 54 pieces of gum at once.
+#### 54 <end>
+If you are a math whiz, please answer the following question.
+Question: Fred has 38 red marbles, half as many green ones, and the rest are dark blue. If he has 63 marbles, how many of them are dark blue?
+Plan:
+Step 1: Calculate the number of green marbles Fred has.
+Step 2: Subtract the number of red and green marbles from the total number of marbles to find the number of dark blue marbles.
+Solution:
+Step 1: Number of green marbles = 38 red marbles / 2 = 19 green marbles
+Step 2: Number of dark blue marbles = Total number of marbles - red marbles - green marbles = 63 marbles - 38 marbles - 19 marbles = 6 marbles
+Therefore, Fred has 6 dark blue marbles.
+#### 6 <end>
+If you are a math whiz, please answer the following question.
+Question: There are 92 students altogether. Twenty of them ride the school bus home together, 5/8 of the remaining ride their own bike home, and the rest whose houses are near the school walk home. How many students are walking home?
+Plan:
+Step 1: Calculate the number of students who don't ride the school bus.
+Step 2: Calculate the number of students who ride their own bikes home.
+Step 3: Subtract the number of students who ride the bus and bike from the total number of students to find the number of students who walk home.
+Solution:
+Step 1: Number of students not riding the bus = Total students - Students who ride the bus = 92 students - 20 students = 72 students.
+Step 2: Number of students who ride their bikes = 5/8 * 72 students = 45 students.
+Step 3: Number of students who walk = Total students not riding the bus - Students who ride bikes = 72 students - 45 students = 27 students.
+Therefore, 27 students are walking home.
+#### 27 <end>
+If you are a math whiz, please answer the following question.
+Question: Luther made 12 pancakes for breakfast. His family has 8 people. How many more pancakes must he make for everyone to have a second pancake?
+Plan:
+Step 1: Calculate the total number of pancakes needed for everyone to have a second pancake.
+Step 2: Subtract the original number of pancakes from the total number needed to find out how many more pancakes Luther must make.
+Solution:
+Step 1: Total pancakes needed = 8 people * 2 pancakes = 16 pancakes
+Step 2: Additional pancakes needed = Total pancakes needed - Original pancakes = 16 pancakes - 12 pancakes = 4 pancakes
+Therefore, Luther must make 4 more pancakes.
+#### 4 <end>
+If you are a math whiz, please answer the following question.
+Question: A pool has 48 blue tiles and 32 red tiles. If the pool needs 100 tiles to be completed, how many more tiles are needed?
+Plan:
+Step 1: Calculate the total number of tiles already in the pool.
+Step 2: Subtract the total number of tiles already in the pool from the total tiles needed to find out how many more tiles are needed.
+Solution:
+Step 1: Total tiles already in the pool = 48 blue tiles + 32 red tiles = 80 tiles
+Step 2: More tiles needed = Total tiles needed - Tiles already in the pool = 100 tiles - 80 tiles = 20 tiles
+Therefore, 20 more tiles are needed to complete the pool.
+#### 20 <end>
+If you are a math whiz, please answer the following question.
+Question: Brianne saves $10 in January. Each month, she saves twice as much as her previous month's savings. How much will she save in May?
+Plan:
+Step 1: Calculate how much Brianne saves in February.
+Step 2: Calculate how much Brianne saves in March.
+Step 3: Calculate how much Brianne saves in April.
+Step 4: Calculate how much Brianne saves in May.
+Solution:
+Step 1: February savings = January savings * 2 = $10 * 2 = $20.
+Step 2: March savings = February savings * 2 = $20 * 2 = $40.
+Step 3: April savings = March savings * 2 = $40 * 2 = $80.
+Step 4: May savings = April savings * 2 = $80 * 2 = $160.
+Therefore, Brianne will save $160 in May.
+#### 160 <end>
+If you are a math whiz, please answer the following question.
+Question: Tim does 100 tasks a day. They each pay $1.2. If he works 6 days a week how much does he make a week?
+Plan:
+Step 1: Calculate how much Tim earns in a day.
+Step 2: Calculate how much Tim earns in a week.
+Solution:
+Step 1: Daily earnings = Number of tasks * Pay per task = 100 tasks * $1.2 = $120.
+Step 2: Weekly earnings = Daily earnings * Number of days worked = $120 * 6 days = $720.
+Therefore, Tim makes $720 a week.
+#### 720 <end>
+If you are a math whiz, please answer the following question.
+Question: A school bus has 4 columns and 10 rows of seats. If the school has 6 buses, how many students can the buses accommodate?
+Plan:
+Step 1: Calculate the total number of seats in one bus.
+Step 2: Calculate the total number of seats in all the buses.
+Solution:
+Step 1: Total seats in one bus = Number of columns * Number of rows = 4 columns * 10 rows = 40 seats.
+Step 2: Total seats in all buses = Number of buses * Seats in one bus = 6 buses * 40 seats = 240 seats.
+Therefore, the buses can accommodate 240 students.
+#### 240 <end>
+If you are a math whiz, please answer the following question.
+Question: 

@@ -1,0 +1,52 @@
+Question: Convert the point $(0,3)$ in rectangular coordinates to polar coordinates. Enter your answer in the form $(r, \theta)$, where $r > 0$ and $0 \le \theta < 2\pi.$
+Goal: To convert the given rectangular coordinates $(x, y) = (0, 3)$ into their equivalent polar coordinates $(r, \theta)$.
+Solution: The conversion is done by calculating the radius $r$ using the formula $r = \sqrt{x^2 + y^2}$ and determining the angle $\theta$ based on the point's position on the Cartesian plane.
+1.First, we calculate the radius $r$.
+    $r = \sqrt{0^2 + 3^2} = \sqrt{0 + 9} = \sqrt{9} = 3$.
+2.Next, we find the angle $\theta$. 
+    The point $(0, 3)$ lies on the positive y-axis. The angle from the positive x-axis to the positive y-axis is $\frac{\pi}{2}$ radians.
+Result: The polar coordinates are $\left( 3, \frac{\pi}{2} \right)$.
+#### \left( 3, \tfrac{\pi}{2} \right) <end>
+Question: Solve for $x$: $2x^2 - 8x = 0$.
+Goal: To find the values of $x$ that satisfy the quadratic equation $2x^2 - 8x = 0$.
+Solution: The equation can be solved by factoring out the greatest common factor, $2x$, and then applying the zero-product property to find the possible values for $x$.
+1.Factor out the greatest common factor, $2x$, from the expression:
+    $2x(x - 4) = 0$.
+2.According to the zero-product property, if the product of factors is zero, at least one of the factors must be zero. So, we set each factor equal to zero.
+    $2x = 0 \implies x = 0$.
+    $x - 4 = 0 \implies x = 4$.
+Result: The solutions for $x$ are 0 and 4.
+#### \{0,4\} <end>
+Question: What is the derivative of $f(x) = 3x^2 + 2x + 7$?
+Goal: To find the derivative, $f'(x)$, of the function $f(x) = 3x^2 + 2x + 7$.
+Solution: Differentiate the function term by term using the power rule for derivatives $(\frac{d}{dx}(ax^n) = anx^{n-1})$ and the rule that the derivative of a constant is zero.
+1.Differentiate the first term, $3x^2$:
+    $\frac{d}{dx}(3x^2) = 2 \cdot 3x^{2-1} = 6x$.
+2.Differentiate the second term, $2x$:
+    $\frac{d}{dx}(2x) = 1 \cdot 2x^{1-1} = 2x^0 = 2$.
+3.Differentiate the constant term, 7. The derivative of any constant is 0.
+4.Combine the results: $f'(x) = 6x + 2 + 0$.
+Result: The derivative of the function is $6x+2$.
+#### 6x+2 <end>
+Question: Evaluate $\int_0^1 2x \, dx$.
+Goal: To calculate the value of the definite integral of the function $2x$ from $0$ to $1$.
+Solution: Use the Fundamental Theorem of Calculus. First, find the antiderivative of $2x$, and then evaluate the result at the upper limit (1) and subtract the result of evaluating at the lower limit (0).
+1.Find the antiderivative of $2x$ using the power rule for integration $(\int x^n \, dx = \frac{x^{n+1}}{n+1})$.
+    $\int 2x \, dx = 2 \cdot \frac{x^2}{2} = x^2$.
+2.Evaluate the antiderivative from 0 to 1:
+    $[x^2]_0^1 = (1)^2 - (0)^2$.
+3.Calculate the final result: $1 - 0 = 1$.
+Result: The value of the definite integral is 1.
+#### 1 <end>
+Question: Simplify $\dfrac{6}{\sqrt{3}}$.
+Goal: To simplify the given expression by removing the square root from the denominator, a process known as rationalizing the denominator.
+Solution: Multiply the numerator and the denominator by $\sqrt{3}$. This doesn't change the value of the expression because $\frac{\sqrt{3}}{\sqrt{3}} = 1$.
+1.Multiply the fraction by $\frac{\sqrt{3}}{\sqrt{3}}$:
+    $\dfrac{6}{\sqrt{3}} \cdot \dfrac{\sqrt{3}}{\sqrt{3}}$.
+2.Multiply the numerators and the denominators:
+    $\dfrac{6 \cdot \sqrt{3}}{\sqrt{3} \cdot \sqrt{3}} = \dfrac{6\sqrt{3}}{3}$.
+3.Simplify the resulting fraction:
+    $\frac{6}{3} \cdot \sqrt{3} = 2\sqrt{3}$.
+Result: The simplified expression is $2\sqrt{3}$.
+#### 2\sqrt{3} <end>
+Question: 

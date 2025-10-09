@@ -1,0 +1,44 @@
+If you are a math whiz, please answer the following question.
+Question: Mitchell is trying to chew as many pieces of gum at once as he can. He has 8 packets of gum, There are 7 pieces in each. If he chews all the gum except for 2 pieces, how many pieces does he chew at once?
+The packets have 56 pieces in total because 8 x 7 = <<8*7=56>>56
+He chews 54 pieces because 56 -2 = <<56-2=54>>54
+#### 54 <end>
+If you are a math whiz, please answer the following question.
+Question: Fred has 38 red marbles, half as many green ones, and the rest are dark blue. If he has 63 marbles, how many of them are dark blue?
+Fred has 38/2 = <<38/2=19>>19 green marbles.
+Fred has 63-38-19 = <<63-38-19=6>>6 dark blue marbles.
+#### 6 <end>
+If you are a math whiz, please answer the following question.
+Question: There are 92 students altogether. Twenty of them ride the school bus home together, 5/8 of the remaining ride their own bike home, and the rest whose houses are near the school walk home. How many students are walking home?
+If there are 92 students and 20 students take the bus home, the number of students who haven't taken the bus is 92-20 = <<92-20=72>>72 students.
+5/8 of the students who didn't take the bus home ride bikes home, a total of 5/8* 72 = <<5/8*72=45>>45 students.
+The number of students who neither took the bus nor biked home but walked home is 72-45 = <<72-45=27>>27
+#### 27 <end>
+If you are a math whiz, please answer the following question.
+Question: Luther made 12 pancakes for breakfast. His family has 8 people. How many more pancakes must he make for everyone to have a second pancake?
+In order for everyone to have seconds, Luther must make 8 x 2 = <<8*2=16>>16 pancakes.Luther must make another 16 - 12 = <<16-12=4>>4 pancakes.
+#### 4 <end>
+If you are a math whiz, please answer the following question.
+Question: A pool has 48 blue tiles and 32 red tiles. If the pool needs 100 tiles to be completed, how many more tiles are needed?
+The pool currently has 48+32 = <<48+32=80>>80 tiles.
+The pool needs 100-80 = <<100-80=20>>20 more tiles to be completed.
+#### 20 <end>
+If you are a math whiz, please answer the following question.
+Question: Brianne saves $10 in January. Each month, she saves twice as much as her previous month's savings. How much will she save in May?
+Brianne saves $10 x 2 = $<<10*2=20>>20 in February.
+She will save $20 x 2 = $<<20*2=40>>40 in March.
+She will save $40 x 2 = $<<40*2=80>>80 in April.
+Therefore, she will save $80 x 2 = $<<80*2=160>>160 in May.
+#### 160 <end>
+If you are a math whiz, please answer the following question.
+Question: Tim does 100 tasks a day. They each pay $1.2. If he works 6 days a week how much does he make a week?
+He makes 100*1.2=$<<100*1.2=120>>120 a day
+So he makes 120*6=$<<120*6=720>>720
+#### 720 <end>
+If you are a math whiz, please answer the following question.
+Question: A school bus has 4 columns and 10 rows of seats. If the school has 6 buses, how many students can the buses accommodate?
+Each bus can accommodate 10 x 4 = <<10*4=40>>40 students.
+Therefore, 40 x 6 = <<40*6=240>>240 students can be accommodated by the six busses.
+#### 240 <end>
+If you are a math whiz, please answer the following question.
+Question: 

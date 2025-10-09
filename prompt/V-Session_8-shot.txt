@@ -1,0 +1,88 @@
+SYSTEM: You are a precise math assistant. 
+Follow these formatting rules strictly:
+- Always output in the structure: Goal, Solution, Thinking i, Reasoning i, (final natural language summary), Result.
+- Each step must be numbered consistently (Thinking 1, Reasoning 1, …).
+- Every calculation must explicitly show arithmetic inside << ... >> before the result.
+- End with a single line: Result: <final number>.
+- Do not output anything outside this structure.
+Question: Mitchell is trying to chew as many pieces of gum at once as he can. He has 8 packets of gum. There are 7 pieces in each. If he chews all the gum except for 2 pieces, how many pieces does he chew at once?
+Goal: The goal is to determine how many pieces of gum Mitchell chews at once.
+Solution: To solve this, we calculate the total number of pieces of gum and then subtract the ones he does not chew.
+Thinking 1: We calculate the total number of gum pieces Mitchell has.
+Reasoning 1: Total = Number of packets × Pieces per packet = 8 × 7 = <<8 × 7 = 56>> 56 pieces
+Thinking 2: We subtract the pieces he does not chew.
+Reasoning 2: Chewed = 56 − 2 = <<56 − 2 = 54>> 54 pieces
+Mitchell chews 54 pieces of gum at once.
+Result: 54
+Question: Fred has 38 red marbles, half as many green ones, and the rest are dark blue. If he has 63 marbles, how many of them are dark blue?
+Goal: The goal is to determine how many of Fred’s marbles are dark blue.
+Solution: To solve this, we first find the number of green marbles, then add red and green, and finally subtract from the total.
+Thinking 1: We calculate the number of green marbles.
+Reasoning 1: Green = Red ÷ 2 = 38 ÷ 2 = <<38 ÷ 2 = 19>> 19 marbles
+Thinking 2: We find the total red and green marbles.
+Reasoning 2: Red + Green = 38 + 19 = <<38 + 19 = 57>> 57 marbles
+Thinking 3: We subtract from the total to find dark blue marbles.
+Reasoning 3: Dark blue = 63 − 57 = <<63 − 57 = 6>> 6 marbles
+Fred has 6 dark blue marbles.
+Result: 6
+Question: There are 92 students altogether. Twenty of them ride the school bus home together, 5/8 of the remaining ride their own bike home, and the rest whose houses are near the school walk home. How many students are walking home?
+Goal: The goal is to find out how many students are walking home.
+Solution: To solve this, we subtract bus riders, calculate bike riders, and then subtract to find walkers.
+Thinking 1: We subtract the bus riders from the total.
+Reasoning 1: Remaining = 92 − 20 = <<92 − 20 = 72>> 72 students
+Thinking 2: We calculate how many ride bikes.
+Reasoning 2: Bike riders = (5/8) × 72 = <<(5/8) × 72 = 45>> 45 students
+Thinking 3: We subtract bike riders from the remaining to get walkers.
+Reasoning 3: Walkers = 72 − 45 = <<72 − 45 = 27>> 27 students
+27 students are walking home from school.
+Result: 27
+Question: Luther made 12 pancakes for breakfast. His family has 8 people. How many more pancakes must he make for everyone to have a second pancake?
+Goal: The goal is to find out how many more pancakes Luther must make.
+Solution: To solve this, we calculate how many pancakes are needed for two each, then subtract the ones already made.
+Thinking 1: We calculate the total needed.
+Reasoning 1: Total needed = 8 × 2 = <<8 × 2 = 16>> 16 pancakes
+Thinking 2: We subtract the pancakes already made.
+Reasoning 2: Additional needed = 16 − 12 = <<16 − 12 = 4>> 4 pancakes
+Luther needs to make 4 more pancakes.
+Result: 4
+Question: A pool has 48 blue tiles and 32 red tiles. If the pool needs 100 tiles to be completed, how many more tiles are needed?
+Goal: The goal is to find out how many more tiles are needed to complete the pool.
+Solution: To solve this, we calculate the current number of tiles and subtract from the total required.
+Thinking 1: We calculate the current number of tiles.
+Reasoning 1: Current = Blue + Red = 48 + 32 = <<48 + 32 = 80>> 80 tiles
+Thinking 2: We subtract this from the required total.
+Reasoning 2: Additional = 100 − 80 = <<100 − 80 = 20>> 20 tiles
+20 more tiles are needed to complete the pool.
+Result: 20
+Question: Brianne saves $10 in January. Each month, she saves twice as much as her previous month's savings. How much will she save in May?
+Goal: The goal is to find out how much Brianne saves in May.
+Solution: To solve this, we double her savings each month starting from January until May.
+Thinking 1: We calculate February savings.
+Reasoning 1: February = 10 × 2 = <<10 × 2 = 20>> 20
+Thinking 2: We calculate March savings.
+Reasoning 2: March = 20 × 2 = <<20 × 2 = 40>> 40
+Thinking 3: We calculate April savings.
+Reasoning 3: April = 40 × 2 = <<40 × 2 = 80>> 80
+Thinking 4: We calculate May savings.
+Reasoning 4: May = 80 × 2 = <<80 × 2 = 160>> 160
+Brianne saves $160 in May.
+Result: 160
+Question: Tim does 100 tasks a day. They each pay $1.2. If he works 6 days a week how much does he make a week?
+Goal: The goal is to find out how much Tim makes in a week.
+Solution: To solve this, we calculate his daily earnings and multiply by the number of days he works.
+Thinking 1: We calculate his daily earnings.
+Reasoning 1: Daily = 100 × 1.2 = <<100 × 1.2 = 120>> 120
+Thinking 2: We multiply by the number of working days.
+Reasoning 2: Weekly = 120 × 6 = <<120 × 6 = 720>> 720
+Tim makes $720 in a week.
+Result: 720
+Question: A school bus has 4 columns and 10 rows of seats. If the school has 6 buses, how many students can the buses accommodate?
+Goal: The goal is to find out how many students the buses can accommodate.
+Solution: To solve this, we calculate the seats in one bus and multiply by the total buses.
+Thinking 1: We calculate the seats in one bus.
+Reasoning 1: Seats per bus = 4 × 10 = <<4 × 10 = 40>> 40 seats
+Thinking 2: We multiply by the number of buses.
+Reasoning 2: Total = 40 × 6 = <<40 × 6 = 240>> 240 seats
+The buses can accommodate 240 students.
+Result: 240
+Question:

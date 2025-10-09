@@ -1,0 +1,23 @@
+Example 1:
+Q: Convert the point $(0,3)$ in rectangular coordinates to polar coordinates.
+Solution: Compute r = sqrt(0^2+3^2)=3. The angle from positive x-axis is \\frac{\\pi}{2}.
+Final: \\boxed{(3, \\frac{\\pi}{2})}
+Example 2:
+Q: Solve for x: 2x^2 - 8x = 0.
+Solution: Factor: 2x(x-4)=0, so x = 0 or x = 4.
+Final: \\boxed{\\{0,4\\}}
+Example 3:
+Q: What is the derivative of f(x)=3x^2+2x+7 ?
+Solution: Termwise: d/dx(3x^2)=6x, d/dx(2x)=2.
+Final: \\boxed{6x+2}
+Example 4:
+Q: Evaluate \\int_0^1 2x \\, dx.
+Solution: Antiderivative is x^2; evaluate 0..1 gives 1.
+Final: \\boxed{1}
+Example 5:
+Q: Simplify \\dfrac{6}{\\sqrt{3}}.
+Solution: Rationalize: 6/\\sqrt{3} * \\sqrt{3}/\\sqrt{3} = 6\\sqrt{3}/3 = 2\\sqrt{3}.
+Final: \\boxed{2\\sqrt{3}}
+Please reason step by step, and put your final answer within \\boxed{}.
+Important: The FINAL boxed answer must use exact forms only — integers, fractions (e.g. \\frac{3}{2}), and symbolic constants like \\pi. Do NOT use decimal approximations in the final boxed answer. If you show decimals, put them only in intermediate steps (not inside \\boxed{})
+Q: 

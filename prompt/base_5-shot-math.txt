@@ -1,0 +1,22 @@
+If you are a math whiz, please answer the following question.
+Question: Convert the point $(0,3)$ in rectangular coordinates to polar coordinates. Enter your answer in the form $(r, \theta)$, where $r > 0$ and $0 \le \theta < 2\pi.$
+We compute $r = \sqrt{0^2 + 3^2} = 3$. The line from the origin to $(0,3)$ makes an angle of $\\frac{\\pi}{2}$ with the positive $x$-axis.
+Therefore, the polar coordinates are $\\left( 3, \\frac{\\pi}{2} \\right)$.
+#### \\left( 3, \\tfrac{\\pi}{2} \\right) <end>
+If you are a math whiz, please answer the following question.
+Question: Solve for $x$: $2x^2 - 8x = 0$.
+Factor: $2x(x - 4) = 0$. Thus, $x=0$ or $x=4$.
+#### \\{0,4\\} <end>
+If you are a math whiz, please answer the following question.
+Question: What is the derivative of $f(x) = 3x^2 + 2x + 7$?
+We differentiate term by term: $\\frac{d}{dx}(3x^2) = 6x$, $\\frac{d}{dx}(2x)=2$, constant vanishes. So $f'(x)=6x+2$.
+#### 6x+2 <end>
+If you are a math whiz, please answer the following question.
+Question: Evaluate $\\int_0^1 2x \\, dx$.
+The antiderivative of $2x$ is $x^2$. Evaluating from $0$ to $1$ gives $1^2-0^2=1$.
+#### 1 <end>
+If you are a math whiz, please answer the following question.
+Question: Simplify $\\dfrac{6}{\\sqrt{3}}$.
+Multiply numerator and denominator by $\\sqrt{3}$ to rationalize: $\\dfrac{6}{\\sqrt{3}} \\cdot \\dfrac{\\sqrt{3}}{\\sqrt{3}} = \\dfrac{6\\sqrt{3}}{3} = 2\\sqrt{3}$.
+#### 2\\sqrt{3} <end>
+If you are a math whiz, please answer the following question.
