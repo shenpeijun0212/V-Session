@@ -1,0 +1,3 @@
+# Core package, Transformers fallback, dataset preparation, and test tooling.
+-e .[hf,data,dev]
+

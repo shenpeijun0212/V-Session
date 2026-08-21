@@ -1,0 +1,3 @@
+# Install in a fresh environment with a CUDA-compatible vLLM/PyTorch build.
+-e .[vllm,data,dev]
+
