@@ -1,73 +1,88 @@
-# V-Session: Structured Reasoning for Mathematical Problem Solving
+# V-Session: Structured Mathematical Reasoning
 
-This repository contains prompts, evaluation utilities, reference artifacts, and
-paper-derived experiment code for **V-Session**, a five-stage reasoning framework:
-`Goal → Solution → Thinking → Reasoning → Result`.
+V-Session is a structured reasoning framework for mathematical problem solving. It organizes a
+response into five stages:
 
-The current cleanup starts from upstream archive commit
-`7293d0bda7381a206867c2b59ffd698899a6fac6`. Original `data/`, top-level
-`prompt/*.txt`, and `log/` files are preserved byte-for-byte. The professional
-runner and zero-shot templates added here are clearly marked as reconstructed from
-the revised manuscript; they are not presented as recovered historical code.
+1. **Goal** — identify the objective and relevant information.
+2. **Solution** — choose an overall strategy.
+3. **Thinking** — break the strategy into concrete steps.
+4. **Reasoning** — carry out the derivation and calculations.
+5. **Result** — report the final answer in the required format.
 
-## What is included
+Formal calculations in V-Session use the Unicode delimiters `≪ ... ≫`. GSM8K responses end with
+`#### <number>`, while MATH500 responses end with `Final Answer: <answer>`.
+
+This repository provides prompts, inference runners, answer evaluation, statistical analysis,
+trace validation, and fine-tuning utilities for V-Session experiments on GSM8K and MATH500.
+
+## Features
+
+- Five prompting methods: Direct, Chain-of-Thought (CoT), Program-of-Thought (PoT),
+  Plan-and-Solve (PS), and V-Session.
+- Zero-shot prompt templates for GSM8K and MATH500.
+- Stage and notation ablations for MATH500.
+- Raw-completion inference with vLLM, with Hugging Face Transformers as a fallback.
+- Deterministic dataset validation, prompt hashing, and run metadata.
+- GSM8K numeric scoring and conservative MATH500 symbolic equivalence checks.
+- V-Session structure audits for stage order, final-answer format, and calculation delimiters.
+- Paired bootstrap confidence intervals, exact McNemar tests, and RSQ aggregation.
+- Validation of generated V-Session traces before supervised fine-tuning.
+
+## Repository layout
 
 ```text
-LICENSE                       MIT license for original project code/documentation
-data/                         Archived GSM8K train and MATH500 snapshots
-prompt/                       Archived 8/5-shot prompt files
-prompt/zero-shot/             Paper-derived Qwen3.5 zero-shot templates
-src/vsession/                 Data, prompts, scoring, RSQ aggregation, runner, statistics
-scripts/prepare_gsm8k.py      Freeze the canonical 1,319-item GSM8K test split
-scripts/run_qwen35_9b_*.sh    Two-GPU, five-method Qwen3.5-9B example
-scripts/validate_traces.py    V-Session trace checks before fine-tuning
-eval/                         Accuracy and paired-statistics utilities
-fine-tuning/                  Guarded Llama3-8B/LLaMA-Factory template
-test/                         Backward-friendly MATH500 entry point
-log/                          Preserved Qwen2.5-3B reference logs
-tests/                        Unit tests that do not load a language model
+data/                         Benchmark data files
+prompt/                       Few-shot and zero-shot prompt templates
+src/vsession/                 Inference, data loading, scoring, statistics, and structure checks
+scripts/prepare_gsm8k.py      Prepare the GSM8K test split
+scripts/run_qwen35_9b_*.sh    Run the five methods on two GPUs
+scripts/validate_traces.py    Validate generated V-Session traces
+eval/                         Accuracy, RSQ, and paired-statistics commands
+fine-tuning/                  LLaMA-Factory fine-tuning launcher
+test/                         MATH500 command-line wrapper
+tests/                        Model-free unit tests
+log/                          Example evaluation logs
 ```
-
-## Protocols: do not mix them
-
-The revised manuscript defines the new Qwen3.5 main experiment as **zero-shot**,
-with no worked examples, full GSM8K test (1,319 items), full MATH500 (500 items),
-and greedy pass@1 decoding. Five methods are compared: Direct/Base, CoT, PoT,
-Plan-and-Solve, and V-Session.
-
-The archived repository separately contains GSM8K 8-shot and MATH 5-shot evaluation
-prefixes. Those artifacts are useful for historical comparisons but are not the
-Qwen3.5 main-table protocol. The paper describes a separate 8-shot prompt for
-converting gold GSM8K solutions into fine-tuning traces. That conversion prompt was
-not archived and is not the same artifact as the retained evaluation prefixes.
-
-One archived MATH 5-shot demonstration overlaps the included MATH500 snapshot.
-Use `legacy-five-shot` only as an explicitly labeled historical protocol, not as a
-paper-main result.
 
 ## Installation
 
-Python 3.10 or newer is required. Exact historical package versions were not
-archived, so the dependency ranges below are compatibility specifications rather
-than a claim of the original environment.
+Python 3.10 or newer is required.
+
+For the core package, dataset preparation, Hugging Face backend, and development tools:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-For vLLM on a CUDA machine, use a fresh environment with a PyTorch/CUDA-compatible
-vLLM wheel:
+For CUDA inference with vLLM, use a clean environment and install a vLLM build compatible with
+the machine's CUDA driver:
 
 ```bash
-pip install -r requirements-vllm.txt
+python3 -m venv .venv-vllm
+source .venv-vllm/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements-vllm.txt
 ```
 
-## Validate without loading a model
+## Data preparation
 
-The dry-run path validates every source record, verifies the prompt placeholder,
-renders examples, records hashes/configuration, and does not import PyTorch or vLLM:
+`data/MATH.jsonl` contains the 500 MATH500 evaluation examples. The runner expects the GSM8K test
+split at `data/gsm8k_test.jsonl`; create it with:
+
+```bash
+python scripts/prepare_gsm8k.py --output data/gsm8k_test.jsonl
+```
+
+The command downloads the 1,319-example `openai/gsm8k` test split and writes a SHA-256 metadata
+file beside it. The included `data/GSM8K.json` and `data/GSM8K.jsonl` files contain the GSM8K
+training split and should not be used for test-set accuracy.
+
+## Validate a configuration
+
+Use `dry-run` to validate the full dataset and render prompt samples without loading a model:
 
 ```bash
 python -m vsession.cli dry-run \
@@ -78,29 +93,16 @@ python -m vsession.cli dry-run \
   --output-dir results/dry-run/math500-vsession
 ```
 
-## Prepare GSM8K test data
+The command writes `dry-run.json`, including the resolved settings, input hashes, and prompt
+previews.
 
-The archived `data/GSM8K.json` and `data/GSM8K.jsonl` each contain 7,473 examples
-and must not be used as the paper's 1,319-item test set. Prepare and fingerprint the
-canonical test split with:
+## Run an experiment
 
-```bash
-pip install -e '.[data]'
-python scripts/prepare_gsm8k.py --output data/gsm8k_test.jsonl
-```
-
-For a stronger provenance record, pass an immutable dataset `--revision`.
-
-## Run one paper-derived experiment
-
-The default backend is vLLM. Prompts are sent as raw completions without a chat
-template, which is appropriate for a Base checkpoint. The command records all
-generation settings because the manuscript does not specify the exact checkpoint,
-dtype, backend, maximum output length, stop strings, repetition penalty, batching,
-or random seed.
+The default backend is vLLM. Prompts are passed to the selected checkpoint as raw completions
+without a chat template.
 
 ```bash
-python -m vsession.cli run \
+CUDA_VISIBLE_DEVICES=0 python -m vsession.cli run \
   --dataset math500 \
   --dataset-path data/MATH.jsonl \
   --expected-count 500 \
@@ -109,150 +111,159 @@ python -m vsession.cli run \
   --backend vllm \
   --dtype bfloat16 \
   --max-new-tokens 2048 \
-  --output-dir results/paper-zero-shot-reconstructed/math500/vsession
+  --output-dir results/math500/vsession
 ```
 
-`2048`, BF16, seed 42, vLLM, and repetition penalty 1.0 are transparent
-engineering defaults, not paper-reported values.
+Use `--backend hf` for the Transformers backend. Common generation options include
+`--request-batch-size`, `--tensor-parallel-size`, `--gpu-memory-utilization`, `--seed`,
+`--repetition-penalty`, and `--stop`. Sampling is disabled by default; enable it explicitly with
+`--do-sample --temperature <value>`.
 
-## Five methods on two GPUs
+Each completed run writes:
 
-The repository includes one Qwen3.5-9B Base example, as requested. It runs
-Direct/CoT/PoT sequentially on GPU 0 and PS/V-Session sequentially on GPU 1:
+```text
+metadata.json       Resolved configuration, hashes, and runtime information
+predictions.jsonl   Item IDs, questions, prompt hashes, completions, scores, and structure audits
+summary.json        Aggregate accuracy and generation statistics
+```
+
+Existing run artifacts are protected from accidental replacement. Use `--overwrite` only when an
+existing output directory is intentionally being reused.
+
+## Run all five methods on two GPUs
+
+The launcher assigns Direct, CoT, and PoT to the first GPU, and PS and V-Session to the second.
+Methods assigned to the same GPU run sequentially. This is method-level parallelism: each GPU
+loads its own model instance.
 
 ```bash
 MODEL_PATH=/path/to/Qwen3.5-9B-Base \
 DATASET=math500 \
+GPU_IDS=0,1 \
 bash scripts/run_qwen35_9b_paper_two_gpu.sh
 ```
 
-Set `DRY_RUN=1` to validate all five configurations without loading the model.
-`GPU_IDS` accepts exactly two comma-separated device IDs and defaults to an existing
-`CUDA_VISIBLE_DEVICES` value (otherwise `0,1`). Result paths derive from the model
-directory name; set `MODEL_LABEL` or `RESULTS_ROOT` explicitly when needed. Existing
-logs/results are protected unless `OVERWRITE=1` is intentionally supplied, and
-interrupting the launcher terminates its child jobs.
+Set `DATASET=gsm8k` after preparing `data/gsm8k_test.jsonl`. To check all five configurations
+without loading the model, add `DRY_RUN=1`. The launcher also accepts `PYTHON_BIN`, `DATASET_PATH`,
+`MODEL_LABEL`, `RESULTS_ROOT`, `REQUEST_BATCH_SIZE`, `MAX_NEW_TOKENS`, `LIMIT`, and `OVERWRITE`.
 
-## Historical MATH entry point
+## MATH500 ablations
 
-The familiar wrapper remains available. Its default is the revised paper zero-shot
-V-Session template:
+The following additional `--method` values are available for MATH500:
 
-```bash
-MODEL_NAME_OR_PATH=/path/to/model bash test/run_math_eval.sh
+```text
+no_goal              Remove the Goal stage
+no_solution          Remove the Solution stage
+no_thinking          Remove the Thinking stage
+no_reasoning         Remove the Reasoning stage
+no_result            Remove the Result stage
+vsession_no_symbols  Do not use calculation delimiters
+vsession_ascii_symbols
+                     Use << ... >> delimiters
+vsession_compact     Use a compact five-stage response
 ```
 
-To deliberately use the archived MATH prefix (now correctly prepended), set
-`PROMPT_MODE=legacy-five-shot`. Results are written as `predictions.jsonl`,
-`metadata.json`, and `summary.json`; malformed data is no longer skipped silently.
-
-## Scoring and statistics
-
-The scorer prioritizes the manuscript's standard final fields:
-
-- GSM8K V-Session: `#### <number>`
-- MATH500 V-Session: `Final Answer: <answer>`
-
-For paper-derived V-Session and ablation runs, the primary `correct` field requires
-the strict terminal field; a fallback parse is retained separately for diagnostics.
-Because the manuscript does not publish the parser for Direct/CoT/PoT/PS, those
-baselines use labeled fallback extraction when necessary. GSM8K additionally records
-the archived last-unsigned-digit score as `legacy_correct`. MATH equivalence preserves
-tuple/list/interval/set structure and converts a small LaTeX whitelist through a
-bounded Python AST; model-produced strings are never passed to `eval`, `sympify`, or
-`parse_expr`.
+Run an ablation with the same command used for a main experiment, changing `--method` and
+`--output-dir`:
 
 ```bash
-python eval/compute_accuracy.py results/path/predictions.jsonl
+CUDA_VISIBLE_DEVICES=0 python -m vsession.cli run \
+  --dataset math500 \
+  --dataset-path data/MATH.jsonl \
+  --expected-count 500 \
+  --method no_goal \
+  --model-path /path/to/Qwen3.5-9B-Base \
+  --backend vllm \
+  --output-dir results/math500/no_goal
+```
+
+## Accuracy and paired statistics
+
+Recompute aggregate accuracy from the boolean `correct` field in an item-level prediction file:
+
+```bash
+python eval/compute_accuracy.py results/math500/vsession/predictions.jsonl --json
+```
+
+For V-Session and its ablations, the primary accuracy requires a correct answer in the strict
+terminal field. Structure compliance is reported independently and does not replace answer
+accuracy.
+
+Compare two runs whose prediction files contain the same set of item IDs:
+
+```bash
 python eval/paired_statistics.py \
-  --reference results/no_symbols/predictions.jsonl \
-  --candidate results/full/predictions.jsonl
+  --reference results/math500/vsession_no_symbols/predictions.jsonl \
+  --candidate results/math500/vsession/predictions.jsonl \
+  --output results/math500/full-vs-no-symbols.json
 ```
 
-The paired tool aligns exact item IDs, reports a paired percentile-bootstrap
-interval, and performs a two-sided exact McNemar test. Its difference is always
-`candidate − reference`; the example therefore reports Full − No Symbols, matching
-the paper's ablation-table direction. Bootstrap count/seed and the McNemar
-implementation are disclosed engineering choices because the paper does not specify
-them.
+The reported accuracy difference is `candidate - reference`. The command uses paired percentile
+bootstrap confidence intervals and a two-sided exact McNemar test, and records the input hashes,
+bootstrap seed, and number of resamples.
 
-The preserved sample logs produce:
+## RSQ aggregation
 
-- MATH500: 196/500 (39.20%)
-- GSM8K1000: 787/1000 (78.70%) after treating both `acc:True` and `acc:1.0` as
-  correct; the archived literal-only utility reported 784/1000 (78.40%).
-
-## RSQ aggregation (external ratings only)
-
-The repository implements the paper's equal-weight and weighted RSQ equations for
-already-collected four-dimension ratings. It deliberately does not generate ratings
-or call an LLM judge. Ratings use one JSON object per dimension:
+RSQ ratings use JSONL with one row per style, item, evaluator, and dimension:
 
 ```json
 {"style":"vsession","item_id":"math-001","evaluator_id":"human-1","dimension":"structural_integrity","score":8.5}
 ```
 
+Each evaluator must provide scores from 0 to 10 for `structural_integrity`, `logical_rigor`,
+`calculation_precision`, and `expression_clarity`. Aggregate the ratings with:
+
 ```bash
-python eval/compute_rsq.py ratings.jsonl --paper-panel --preset equal
+python eval/compute_rsq.py ratings.jsonl --paper-panel --preset equal \
+  --output results/rsq.json
 ```
 
-`--paper-panel` requires a complete rectangular panel with the same eight evaluators
-and item set for every style. Four paper-reported weight presets are available. For
-multiple items, the implementation applies the published panel equation per item and
-then averages items equally; the item index is absent from the displayed manuscript
-formula, so this extension is explicitly recorded in the output.
+Available presets are `equal`, `structure-heavy`, `math-rigor-heavy`, and `clarity-heavy`.
+The command aggregates the supplied ratings; it does not call a judge model or generate ratings.
+`--paper-panel` requires every style-item group to use the same eight evaluators and every style
+to use the same item set.
 
-An automatic RSQ judge cannot be reconstructed honestly: the manuscript prose calls
-for four dimension scores, while the supplied appendix figure asks for one overall
-score per response. The original 200 item IDs, evaluator-level ratings, four-dimension
-rubric anchors, model revisions, and calibration parameters are also unavailable.
-Consequently, this utility cannot reproduce the paper's reported RSQ table without
-those external judgments. The binary checks in `structure.py` are format audits and
-must not be presented as 0--10 RSQ Structural Integrity ratings.
+## Trace validation and fine-tuning
 
-## Ablations and trace validation
-
-Paper-described stage and notation ablations are under
-`prompt/zero-shot/math500/`. Exact ablation wording was not published, so these
-files are explicitly described as prose-derived reconstructions. `No Result` still
-requires an independent `Final Answer:` line, matching the paper's control.
-
-Before using generated GSM8K V-Session traces for fine-tuning:
+Validate generated GSM8K V-Session traces before adding them to a supervised fine-tuning dataset:
 
 ```bash
 python scripts/validate_traces.py generated.jsonl validated.jsonl \
-  --trace-field completion --answer-field answer --require-delimiters
+  --trace-field completion \
+  --answer-field answer \
+  --require-delimiters
 ```
 
-The validator checks strict gold-answer agreement, stage presence/order/uniqueness,
-delimiter balance/use, and known finish reasons. By default it writes only valid
-records and returns status 3 if any record was rejected; `--allow-partial` opts into
-a successful filtered run, while `--include-invalid` creates an audit-only output.
-`--require-delimiters` conservatively requires a pair in every trace because the
-paper's “when applicable” condition cannot be classified automatically. The
-manuscript does not publish its arithmetic-expression grammar, so parseable-
-calculation validation is reported as `not_checked` instead of being fabricated.
+By default, only valid records are written. The validator checks stage presence and order,
+non-empty stage content, delimiter format, terminal answer agreement, and generation finish
+reason. It does not evaluate the arithmetic inside `≪ ... ≫`. If any record is rejected, the
+valid subset is still written and the command exits with status 3; use `--allow-partial` when a
+successful filtered run is intended.
 
-See [fine-tuning/README.md](fine-tuning/README.md) for the guarded Llama3-8B
-LLaMA-Factory template and its reproducibility limits.
+The fine-tuning launcher integrates with a LLaMA-Factory checkout and a dataset registered in
+LLaMA-Factory. Inspect the generated command before training:
 
-## Reproducibility boundary
+```bash
+LLAMAFACTORY_ROOT=/path/to/LLaMA-Factory \
+MODEL_NAME_OR_PATH=/path/to/Llama3-8B \
+DATASET=gsm8k_vsession \
+DRY_RUN=1 \
+bash fine-tuning/run.sh
+```
 
-See [PROVENANCE.md](PROVENANCE.md) for the upstream archive hash, preserved artifact
-hashes, paper-known settings, and remaining unknowns. Do not label a run as an exact
-paper reproduction unless those unknowns are resolved from original experiment
-records.
+See [fine-tuning/README.md](fine-tuning/README.md) for the configurable batch size, learning rate,
+warmup, epoch, DeepSpeed, output, and overwrite options.
+
+## Tests
+
+The test suite does not load a language model:
+
+```bash
+python -m pytest
+ruff check .
+ruff format --check .
+```
 
 ## License
 
-Unless otherwise noted, the original software and documentation in this repository
-are licensed under the [MIT License](LICENSE).
-
-The license does not replace or override the separate terms that apply to third-party
-datasets, pretrained model weights, external frameworks, or other redistributed
-artifacts. Users are responsible for complying with those upstream terms.
-
-## Acknowledgements
-
-This work uses GSM8K, MATH500, Hugging Face Transformers, vLLM, and the open-source
-[LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) project.
+This project is licensed under the [MIT License](LICENSE).
